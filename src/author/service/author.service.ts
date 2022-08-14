@@ -3,6 +3,7 @@ import { UpdateAuthorInput } from './../dto/input/update-author.dto';
 import { CreateAuthorInput } from './../dto/input/create-author.dto';
 import { Injectable } from '@nestjs/common';
 import { Author } from '../model/author.model';
+import { FindByIdArg } from '../dto/args/find-by-id.dto';
 
 @Injectable()
 export class AuthorService {

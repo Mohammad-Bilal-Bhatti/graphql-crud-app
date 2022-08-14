@@ -1,0 +1,79 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  id: Int!
+  title: String!
+  content: String!
+}
+
+type Author {
+  id: Int!
+  name: String!
+  surname: String!
+}
+
+type Query {
+  """find all authors"""
+  authors: [Author]!
+
+  """find author by id"""
+  author(id: Int!): Author
+
+  """find all posts"""
+  posts: [Post]!
+
+  """find post by id"""
+  post(id: Int!): Post
+}
+
+type Mutation {
+  """create author"""
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+
+  """update author"""
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+
+  """delete author"""
+  deleteAuthor(deleteAuthorInput: DeleteAuthorInput!): Author!
+
+  """create new post"""
+  createPost(createPostInput: CreatePostInput!): Post!
+
+  """update post"""
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+
+  """delete post"""
+  deletePost(deletePostInput: DeletePostInput!): Post!
+}
+
+input CreateAuthorInput {
+  name: String!
+  surname: String!
+}
+
+input UpdateAuthorInput {
+  id: Int!
+  name: String!
+  surname: String!
+}
+
+input DeleteAuthorInput {
+  id: Int!
+}
+
+input CreatePostInput {
+  title: String!
+  content: String!
+}
+
+input UpdatePostInput {
+  id: Int!
+  title: String!
+  content: String!
+}
+
+input DeletePostInput {
+  id: Int!
+}

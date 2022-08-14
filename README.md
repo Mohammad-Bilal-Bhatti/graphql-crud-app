@@ -45,6 +45,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+Open browser and goto: http://localhost:3000/graphql and write your query and mutation
+
 ## Test
 
 ```bash
