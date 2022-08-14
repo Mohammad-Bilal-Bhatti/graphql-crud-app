@@ -4,6 +4,7 @@ import { CreateAuthorInput } from './../dto/input/create-author.dto';
 import { Injectable } from '@nestjs/common';
 import { Author } from '../model/author.model';
 import { FindByIdArg } from '../dto/args/find-by-id.dto';
+import { Post } from 'src/post/model/post.model';
 
 @Injectable()
 export class AuthorService {
@@ -12,9 +13,9 @@ export class AuthorService {
 
   constructor() {
     this.authors = [
-      { id: 1, name: 'Talha', surname: 'Bhatti' },
-      { id: 2, name: 'Fahad', surname: 'Khan' },
-      { id: 3, name: 'Nandlal', surname: 'Khatri' },
+      { id: 1, name: 'Talha', surname: 'Bhatti', posts: null },
+      { id: 2, name: 'Fahad', surname: 'Khan', posts: null },
+      { id: 3, name: 'Nandlal', surname: 'Khatri', posts: null },
     ];
     this.nextId = 4;
   }
@@ -29,7 +30,7 @@ export class AuthorService {
   }
 
   create(input: CreateAuthorInput): Author {
-    const author: Author = { id: this.nextId++, ...input };
+    const author: Author = { id: this.nextId++, posts: null, ...input };
     this.authors.push(author);
     return author;
   }

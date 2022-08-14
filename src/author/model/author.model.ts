@@ -1,13 +1,17 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Post } from 'src/post/model/post.model';
 
-@ObjectType()
+@ObjectType({ description: 'Author Model' })
 export class Author {
-  @Field(() => Int)
+  @Field(() => Int, { description: 'author id' })
   id: number;
 
-  @Field()
+  @Field({ description: 'author name' })
   name: string;
 
-  @Field()
+  @Field({ description: 'author surname' })
   surname: string;
+
+  @Field(() => [Post], { description: 'author posts' })
+  posts: Post[];
 }

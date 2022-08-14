@@ -7,15 +7,14 @@ import { DeletePostInput } from '../dto/input/delete-post.dto';
 
 @Injectable()
 export class PostService {
-
   private posts: Post[];
   private nextId: number;
 
   constructor() {
     this.posts = [
-      { id: 1, title: 'Introduction to Nest', content: '...' },
-      { id: 2, title: 'Intorudction to Docker', content: '...' },
-      { id: 3, title: 'Introduction to GraphQl', content: '...' },
+      { id: 1, authorId: 1, title: 'Introduction to Nest', content: '...' },
+      { id: 2, authorId: 1, title: 'Intorudction to Docker', content: '...' },
+      { id: 3, authorId: 2, title: 'Introduction to GraphQl', content: '...' },
     ];
     this.nextId = 4;
   }
@@ -30,7 +29,7 @@ export class PostService {
   }
 
   create(input: CreatePostInput): Post {
-    const post: Post = { id: this.nextId++, ...input };
+    const post: Post = { id: this.nextId++, authorId: 1, ...input };
     this.posts.push(post);
     return post;
   }
@@ -50,5 +49,10 @@ export class PostService {
     const post = this.posts[index];
     this.posts.splice(index, 1);
     return post;
+  }
+
+  findAuthorPosts(authorId: number): Post[] {
+    const posts = this.posts.filter((p) => p.authorId == authorId);
+    return posts;
   }
 }

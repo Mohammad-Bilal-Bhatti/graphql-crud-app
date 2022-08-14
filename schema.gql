@@ -2,16 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""Post Model"""
 type Post {
+  """post id"""
   id: Int!
+
+  """post author id"""
+  authorId: Int!
+
+  """post title"""
   title: String!
+
+  """post content"""
   content: String!
+
+  """post vote count"""
+  votes: Int
 }
 
+"""Author Model"""
 type Author {
+  """author id"""
   id: Int!
+
+  """author name"""
   name: String!
+
+  """author surname"""
   surname: String!
+
+  """author posts"""
+  posts: [Post]!
 }
 
 type Query {
