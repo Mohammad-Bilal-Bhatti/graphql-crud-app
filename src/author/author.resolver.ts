@@ -1,3 +1,4 @@
+import { PaginationArgs } from '../shared/args/pagination.args';
 import { PostService } from './../post/service/post.service';
 import { DeleteAuthorInput } from './dto/input/delete-author.dto';
 import { UpdateAuthorInput } from './dto/input/update-author.dto';
@@ -27,8 +28,8 @@ export class AuthorResolver {
     nullable: 'items',
     description: 'find all authors',
   })
-  findAllAuthors(): Author[] {
-    return this.authorService.findAll();
+  findAllAuthors(@Args() { skip, limit }: PaginationArgs): Author[] {
+    return this.authorService.findAll(skip, limit);
   }
 
   @Query(() => Author, {

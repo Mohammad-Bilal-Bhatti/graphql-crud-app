@@ -20,8 +20,8 @@ export class AuthorService {
     this.nextId = 4;
   }
 
-  findAll(): Author[] {
-    return this.authors;
+  findAll(skip: number, limit: number): Author[] {
+    return this.authors.slice(skip, skip + limit);
   }
 
   findById(input: FindByIdArg): Author {

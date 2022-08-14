@@ -37,13 +37,25 @@ type Author {
 
 type Query {
   """find all authors"""
-  authors: [Author]!
+  authors(
+    """skip items"""
+    skip: Int = 0
+
+    """limit items"""
+    limit: Int = 20
+  ): [Author]!
 
   """find author by id"""
   author(id: Int!): Author
 
   """find all posts"""
-  posts: [Post]!
+  posts(
+    """skip items"""
+    skip: Int = 0
+
+    """limit items"""
+    limit: Int = 20
+  ): [Post]!
 
   """find post by id"""
   post(id: Int!): Post

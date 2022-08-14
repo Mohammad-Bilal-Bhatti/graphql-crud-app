@@ -19,8 +19,8 @@ export class PostService {
     this.nextId = 4;
   }
 
-  findAll(): Post[] {
-    return this.posts;
+  findAll(skip: number, limit: number): Post[] {
+    return this.posts.slice(skip, skip + limit);
   }
 
   findById(input: FindByIdArg): Post {

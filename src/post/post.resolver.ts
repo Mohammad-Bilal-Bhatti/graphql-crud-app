@@ -5,6 +5,7 @@ import { FindByIdArg } from './dto/args/find-by-id.dto';
 import { Post } from './model/post.model';
 import { PostService } from './service/post.service';
 import { DeletePostInput } from './dto/input/delete-post.dto';
+import { PaginationArgs } from 'src/shared/args/pagination.args';
 @Resolver(() => Post)
 export class PostResolver {
   constructor(private readonly postService: PostService) {}
@@ -14,8 +15,8 @@ export class PostResolver {
     nullable: 'items',
     description: 'find all posts',
   })
-  findAllPosts(): Post[] {
-    return this.postService.findAll();
+  findAllPosts(@Args() { skip, limit }: PaginationArgs): Post[] {
+    return this.postService.findAll(skip, limit);
   }
 
   @Query(() => Post, {
