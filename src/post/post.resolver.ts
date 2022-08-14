@@ -1,6 +1,6 @@
 import { UpdatePostInput } from './dto/input/update-post.dto';
 import { CreatePostInput } from './dto/input/create-post.dto';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { FindByIdArg } from './dto/args/find-by-id.dto';
 import { Post } from './model/post.model';
 import { PostService } from './service/post.service';
@@ -40,5 +40,10 @@ export class PostResolver {
   @Mutation(() => Post, { name: 'deletePost', description: 'delete post' })
   deletePost(@Args('deletePostInput') input: DeletePostInput): Post {
     return this.postService.delete(input);
+  }
+
+  @Mutation(() => Post, { name: 'likePost', description: 'update post count' })
+  likePost(@Args('postId', { type: () => Int }) postId: number) {
+    return this.postService.likePost(postId);
   }
 }

@@ -55,4 +55,12 @@ export class PostService {
     const posts = this.posts.filter((p) => p.authorId == authorId);
     return posts;
   }
+
+  likePost(postId: number) {
+    const index = this.posts.findIndex((p) => p.id == postId);
+    const post = this.posts[index];
+    post.likes = post.likes ? post.likes + 1 : 1;
+    this.posts.splice(index, 1, post);
+    return post;
+  }
 }

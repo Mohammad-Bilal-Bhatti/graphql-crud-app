@@ -14,6 +14,10 @@ export class Post {
   @Field({ description: 'post content' })
   content: string;
 
-  @Field(() => Int, { description: 'post vote count', nullable: true })
-  votes?: number;
+  @Field(() => Int, {
+    description: 'post likes count',
+    defaultValue: 0,
+    nullable: true,
+  })
+  likes?: number;
 }

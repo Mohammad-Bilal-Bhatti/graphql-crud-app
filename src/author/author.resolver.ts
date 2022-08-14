@@ -21,6 +21,7 @@ export class AuthorResolver {
     private readonly postService: PostService,
   ) {}
 
+  // query resolver fn
   @Query(() => [Author], {
     name: 'authors',
     nullable: 'items',
@@ -63,6 +64,7 @@ export class AuthorResolver {
     return this.authorService.delete(input);
   }
 
+  // Filed resolver fn
   @ResolveField(() => [Post], {
     name: 'posts',
     nullable: 'items',

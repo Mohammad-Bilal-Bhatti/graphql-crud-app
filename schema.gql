@@ -16,8 +16,8 @@ type Post {
   """post content"""
   content: String!
 
-  """post vote count"""
-  votes: Int
+  """post likes count"""
+  likes: Int
 }
 
 """Author Model"""
@@ -67,6 +67,9 @@ type Mutation {
 
   """delete post"""
   deletePost(deletePostInput: DeletePostInput!): Post!
+
+  """update post count"""
+  likePost(postId: Int!): Post!
 }
 
 input CreateAuthorInput {
